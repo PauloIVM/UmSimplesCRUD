@@ -6,3 +6,5 @@ Caso vc queira clonar o projeto, seguem algumas informações:
   ->Estou usando o MongoDB Atlas como banco de dados. Para isso, criei um arquivo .env com a string de conexão ao servidor do MongoDB Atlas; utilizando o dotenv (desta forma a minha senha ao banco de dados não aparece no github). Caso vc queira usar o programa, crie um .env e coloque dentro a variável CONECTIONSTRING recebendo sua string de conexão do MngoDB Atlas; ficaria algo do tipo: CONECTIONSTRING = mongodb+srv://seuUsuario:suaSenhaETomeCuidadoComOURLEncoded@cluster0-piopl.mongodb.net/nomeDoDB?retryWrites=true&w=majority
   
   ->Tentei seguir a arquitetura MVC, e, utilizei diversas dependências como: express, EJS, helmet, mongoose, validator, webpack, bcryptjs, dentre outras.
+  
+  [![Demonstração do CRUD sendo utilizado](http://img.youtube.com/vi/-9FaAJrSCRA/0.jpg)](http://www.youtube.com/watch?v=-9FaAJrSCRA "")
