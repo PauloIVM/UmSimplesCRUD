@@ -1,0 +1,31 @@
+<%- include('includes/head')%>
+<%- include('includes/nav')%>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-5">
+      <h1 class="text-center">Lembretes</h1>
+      <p class="text-center lead">Adicione, edite ou remova seus lembretes</p>
+
+      <%- include('includes/messages') %>
+
+      <form action="/lembrete/register" method="POST">
+        <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+        <div class="form-group">
+          <label>Digite algo que não pode se esquecer:</label>
+          <input type="text" class="form-control" name="lembrete" >
+        </div>
+        <div class="form-group">          
+        </div>
+        <button type="submit" class="btn btn-primary">Criar lembrete</button>
+      </form a>
+      
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include('includes/footer')%>
+    

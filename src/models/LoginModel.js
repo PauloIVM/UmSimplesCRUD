@@ -7,7 +7,7 @@ const LoginSchema = new mongoose.Schema({
   password: { type: String, required: true }
 });
 
-const LoginModel = mongoose.model('Login', LoginSchema);
+const LoginModel = mongoose.model('LoginDB', LoginSchema);
 
 class Login {
     constructor(body){
