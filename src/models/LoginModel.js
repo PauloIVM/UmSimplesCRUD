@@ -5,7 +5,7 @@ const bcryptjs = require('bcryptjs')
 const LoginSchema = new mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
-  lembrete: { type: String, required: false}
+  lembrete: { type: Array, required: false}
 });
 
 const LoginModel = mongoose.model('LoginDB', LoginSchema);

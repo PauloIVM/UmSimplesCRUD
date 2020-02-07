@@ -19,20 +19,22 @@ const LoginModel = require('./LoginModel')
 //Depois, eu preciso descobrir como dar um update com o mongoose, acredito que seria algo do tipo:
 //db.estados.update({sigla: "AL"},{$set: {cidades: [{nome: "Sergipe"}]}})
 
-class lembrete {
-  constructor(body, userEmail){
+class Lembrete {
+  constructor(body, userEmail, lembretes){
     this.body = body
     this.userEmail = userEmail
+    this.lembretes = lembretes.push(body.lembrete)
+    this.user = null
   }
   //this.body.lembrete
   async register(){
     console.log("Tentei adicionar o lembrete:"+this.body.lembrete)
-    //Está encontrando o lembrete acima corretamente. Posso tentar dar um READ para ver se 
-    //estou conseguindo de fato acessar o banco de dados daqui
+    //Tenho que criar aqui uma validação para a quantidade de caracteres no lembrete
     try{  
-      await LoginModel.loginModel.updateOne({email: this.userEmail},{$set: {lembrete: this.body.lembrete}})
+      await LoginModel.loginModel.updateOne({email: this.userEmail},{$push: {lembrete: this.body.lembrete}})
+      //console.log("Schema do lembrete:",this.user)
     }catch(e){console.log("Erro no registro de lembrete ")}
   }
 }
 
-module.exports = lembrete;
+module.exports = Lembrete;
