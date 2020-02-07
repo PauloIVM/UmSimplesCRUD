@@ -26,8 +26,11 @@ class lembrete {
   }
   //this.body.lembrete
   async register(){
+    console.log("Tentei adicionar o lembrete:"+this.body.lembrete)
+    //Está encontrando o lembrete acima corretamente. Posso tentar dar um READ para ver se 
+    //estou conseguindo de fato acessar o banco de dados daqui
     try{  
-      await LoginModel.loginModel.updateOne({email: "$this.userEmail"},{$set: {lembrete: "$this.body.lembrete"}})
+      await LoginModel.loginModel.updateOne({email: this.userEmail},{$set: {lembrete: this.body.lembrete}})
     }catch(e){console.log("Erro no registro de lembrete ")}
   }
 }
