@@ -5,8 +5,8 @@ module.exports.index = (req, res) => {
 }
 
 module.exports.register = async (req, res) => {
-    
-    const lembrete = new Lembrete(req.body)
+    await console.log("Session no lembreteController.register:",res.locals.user.email)
+    const lembrete = new Lembrete(req.body, res.locals.user.email)
     await lembrete.register()
     res.redirect('/')
 }
