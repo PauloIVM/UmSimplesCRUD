@@ -7,4 +7,6 @@ Caso vc queira clonar o projeto, seguem algumas informações:
   
   ->Tentei seguir a arquitetura MVC, e, utilizei diversas dependências como: express, EJS, helmet, mongoose, validator, webpack, bcryptjs, dentre outras.
   
-  [![Demonstração do CRUD sendo utilizado](http://img.youtube.com/vi/-9FaAJrSCRA/0.jpg)](http://www.youtube.com/watch?v=-9FaAJrSCRA "")
+  [![](http://img.youtube.com/vi/5kpXwQSLuH8/0.jpg)](http://www.youtube.com/watch?v=5kpXwQSLuH8 "CRUD simples com NodeJS")
+  
+  
