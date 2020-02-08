@@ -18,7 +18,7 @@ module.exports.register = async function(req, res){
             req.session.save(() => res.redirect('back'))
             return
         }
-
+       
         req.flash('success', 'Usuário criado com sucesso')
         req.session.save(() => res.redirect('back'))
         
@@ -39,9 +39,11 @@ module.exports.login = async function(req, res){
             req.session.save(() => res.redirect('back'))
             return
         }
-
+        
         req.flash('success', 'Usuário logado com sucesso')
         req.session.user = login.user
+        console.log("req.session.user.lembrete dentro do loginController:"+req.session.user.lembrete)
+        req.flash('lembretes', req.session.user.lembrete)
         req.session.save(() => res.redirect('back'))
         
 

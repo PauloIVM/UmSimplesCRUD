@@ -16,11 +16,12 @@ module.exports.register = async (req, res) => {
     
     const lembrete = new Lembrete(req.body, res.locals.user.email, req.session.user.lembrete)
     await lembrete.register()
-    req.flash('lembretes', lembrete.lembretes)
+    
 
     await console.log("Lembretes do usuário no lembreteController.register1:",req.session.user.lembrete)
     await console.log("Lembretes do usuário salvos na classe do model:",lembrete.lembretes)
     //await console.log("req.session.user:",req.session.user)
     //req.session.user.lembrete = lembrete.lembretes
-    req.session.save(() => res.redirect('/'))
+    req.flash('lembretes', req.session.user.lembrete) //Preciso dar um jeito de validar isso pela classe Lembrete
+    req.session.save(() => res.redirect('/'))         //para a validação ficar no model 
 }

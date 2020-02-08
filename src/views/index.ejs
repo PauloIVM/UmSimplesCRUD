@@ -11,16 +11,18 @@
 
       <%- include('includes/messages') %>
 
-      <div class="responsive-table">
-        <table class="table my-3">
-          <tr>
-            <td>Paulo</td>
-            <td>Marinho</td>
-            <td>88327117</td>
-            <td>paulo.vieira.marinho@gmail.com</td>
-          </tr>
-        </table>
-      </div>
+      <% if(lembretes.length > 0) { %>
+        <% lembretes.forEach(lembrete => { %>
+          <div class="responsive-table">
+            <table class="table my-3">
+              <tr>
+                <td><%= lembrete %></td>
+              </tr>
+            </table>
+          </div>
+        <% }) %>  
+      <% } %>
+      
     </div>
     <div class="col-lg-2"></div>
   </div>
