@@ -17,6 +17,14 @@ class Lembrete {
       //console.log("Schema do lembrete:",this.user)
     }catch(e){console.log("Erro no registro de lembrete ")}
   }
+
+  async delete(){
+    // try {
+    //   await LoginModel.loginModel.deleteOne()
+    // } catch (error) {
+      
+    // }
+  }
   
 }
 // Contato.buscaContatos = async function() {

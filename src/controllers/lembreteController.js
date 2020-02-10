@@ -25,3 +25,9 @@ module.exports.register = async (req, res) => {
     req.flash('lembretes', req.session.user.lembrete) //Preciso dar um jeito de validar isso pela classe Lembrete
     req.session.save(() => res.redirect('/'))         //para a validação ficar no model 
 }
+
+module.exports.delete = async function(req, res) {
+    if(!req.params.index) return res.render('404') 
+    console.log(`Deletar o lembrete de index ${req.params.index} do usuário ${res.locals.user.email}`)
+    
+}

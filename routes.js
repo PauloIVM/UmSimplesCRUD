@@ -16,4 +16,5 @@ route.post('/login/login', loginController.login)
 //Rotas para os lembretes
 route.get('/lembrete', lembreteController.index)
 route.post('/lembrete/register', lembreteController.register)
+route.get('/lembrete/delete/:index', lembreteController.delete)
 module.exports = route;

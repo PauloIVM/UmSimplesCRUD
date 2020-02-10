@@ -12,11 +12,12 @@
       <%- include('includes/messages') %>
 
       <% if(lembretes.length > 0) { %>
-        <% lembretes.forEach(lembrete => { %>
+        <% lembretes.forEach((lembrete, index) => { %>
           <div class="responsive-table">
             <table class="table my-3">
               <tr>
                 <td><%= lembrete %></td>
+                <td><a class="text-danger" href="/lembrete/delete/<%= index %>">Excluir</a></td>
               </tr>
             </table>
           </div>
