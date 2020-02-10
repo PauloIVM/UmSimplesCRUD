@@ -30,4 +30,17 @@ module.exports.delete = async function(req, res) {
     if(!req.params.index) return res.render('404') 
     console.log(`Deletar o lembrete de index ${req.params.index} do usuário ${res.locals.user.email}`)
     
+    const lembrete = new Lembrete(req.body, res.locals.user.email, req.session.user.lembrete)
+    const dbAtualizadoAposDELETE = await lembrete.delete(req.params.index, res.locals.user) 
+    
+    req.session.user.lembrete = []
+    dbAtualizadoAposDELETE.lembrete.forEach((element, index) => {
+        req.session.user.lembrete[index] = element        
+    });
+
+    console.log(`index ${req.params.index} do usuário ${res.locals.user.email} após o destroy`)
+    console.log("Lembretes na Session:",req.session.user.lembrete)
+    //Não preciso acionar o flash aqui... só preciso atualizar a Session e redirecionar para a home
+    await console.log("Lembretes na flag:",dbAtualizadoAposDELETE.lembrete)
+    req.session.save(() => res.redirect('/'))
 }

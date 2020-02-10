@@ -18,12 +18,18 @@ class Lembrete {
     }catch(e){console.log("Erro no registro de lembrete ")}
   }
 
-  async delete(){
-    // try {
-    //   await LoginModel.loginModel.deleteOne()
-    // } catch (error) {
+  async delete(index, user){
+    try {
+      const email = user.email
+      const lembrete = user.lembrete[index]
       
-    // }
+      // await LoginModel.loginModel.updateOne({email: email},{$pull: {lembrete: "um"}})
+      await LoginModel.loginModel.updateOne({email: email},{$pull: {lembrete: lembrete}})
+      return await LoginModel.loginModel.findOne({email: email})
+    } catch (error) {
+      console.log("Falhou no lembreteModel")
+      console.log("user.lembrete[index]:",user.lembrete[index])
+    }
   }
   
 }
