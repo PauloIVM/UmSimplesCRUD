@@ -10,7 +10,7 @@ class Lembrete {
   }
   //this.body.lembrete
   async register(){
-    console.log("Tentei adicionar o lembrete:"+this.body.lembrete)
+    // console.log("Tentei adicionar o lembrete:"+this.body.lembrete)
     //Tenho que criar aqui uma validação para a quantidade de caracteres no lembrete
     try{  
       await LoginModel.loginModel.updateOne({email: this.userEmail},{$push: {lembrete: this.body.lembrete}})

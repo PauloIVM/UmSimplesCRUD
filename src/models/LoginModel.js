@@ -15,7 +15,6 @@ class Login {
         this.body = body
         this.errors = []
         this.user = null
-        this.body.lembrete = ["Alguma coisa"]
     }
 
     async login(){
@@ -48,7 +47,8 @@ class Login {
             const salt = bcryptjs.genSaltSync()
             this.body.password = bcryptjs.hashSync(this.body.password, salt)
             this.user = await LoginModel.create(this.body)
-            await LoginModel.updateOne({email: this.body.email},{$push: {lembrete: this.body.lembrete}})
+            // console.log("O this.body.lembrete é:"+this.body.lembrete)
+            // await LoginModel.updateOne({email: this.body.email},{$push: {lembrete: ["Alguma coisa"]}})
         }catch(e){console.log("Erro no this.user await -- ",e)}
         
     }

@@ -12,14 +12,14 @@ module.exports.index = (req, res) => {
 //daí, no EJS não posso esquecer de colocar um foreach para printar cada elemento do array
 
 module.exports.register = async (req, res) => {
-    await console.log("SessionEmail no lembreteController.register:",res.locals.user.email)
+    // await console.log("SessionEmail no lembreteController.register:",res.locals.user.email)
     
     const lembrete = new Lembrete(req.body, res.locals.user.email, req.session.user.lembrete)
     await lembrete.register()
     
 
-    await console.log("Lembretes do usuário no lembreteController.register1:",req.session.user.lembrete)
-    await console.log("Lembretes do usuário salvos na classe do model:",lembrete.lembretes)
+    // await console.log("Lembretes do usuário no lembreteController.register1:",req.session.user.lembrete)
+    // await console.log("Lembretes do usuário salvos na classe do model:",lembrete.lembretes)
     //await console.log("req.session.user:",req.session.user)
     //req.session.user.lembrete = lembrete.lembretes
     req.flash('lembretes', req.session.user.lembrete) //Preciso dar um jeito de validar isso pela classe Lembrete

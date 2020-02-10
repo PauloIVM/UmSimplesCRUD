@@ -1,5 +1,5 @@
 module.exports.index = async(req, res) => {
-  console.log("Redirecionou para home, e o user é:"+req.session.user)
+  // console.log("Redirecionou para home, e o user é:"+req.session.user)
   if((typeof req.session.user === "undefined")||(req.session.user.lembrete.length == 0)){
     res.render('index')
     return 
@@ -25,13 +25,9 @@ module.exports.index = async(req, res) => {
     Estou comentando isso somente para não me esquecer do motivo deste código
     */
   }
-  await console.log("Lembrtes no homeController:"+req.session.user.lembrete)
+  // await console.log("Lembrtes no homeController:"+req.session.user.lembrete)
   await atualizaLembretesFlash()
   
 };
 
-// exports.index = async(req, res) => {
-//   const contatos = await Contato.buscaContatos();
-//   res.render('index', { contatos });
-// };
 

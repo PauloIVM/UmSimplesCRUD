@@ -1,14 +1,12 @@
 const Login = require('../models/LoginModel')
 
 module.exports.index = (req, res) => {
-    console.log("req.session.user:",req.session.user)
+    // console.log("req.session.user:",req.session.user)
     if(req.session.user) return res.redirect('/')
     res.render('login')
 }
 
 module.exports.register = async function(req, res){
-    //Esses paranauês com o login aqui e no LoginModel é simplesmente para a validação ficar no model, e 
-    //não no controllers
     try{
         const login = new Login.login(req.body)
         await login.register()
@@ -43,12 +41,16 @@ module.exports.login = async function(req, res){
         req.flash('success', 'Usuário logado com sucesso')
         req.session.user = login.user
         
-        console.log("req.session.user.lembrete dentro do loginController:"+req.session.user.lembrete)
-        req.flash('lembretes', req.session.user.lembrete)
+        if(req.session.user.lembrete.length !== 0){
+            req.flash('lembretes', req.session.user.lembrete)
+            console.log("Entrou no if do loginController")
+        }
+      
         req.session.save(() => res.redirect('back'))
         
 
     }catch(e){
+        console.log("Erro no loginController:",e)
         return res.render('404')
     }
     
