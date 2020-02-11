@@ -17,7 +17,10 @@
             <table class="table my-3">
               <tr>
                 <td><%= lembrete %></td>
-                <td align="right"><a class="text-danger" href="/lembrete/delete/<%= index %>">Excluir</a></td>
+                <td align="right">
+                  <a class="text-success ml-2" href="/lembrete/editar/<%= index %>">Editar</a>
+                  <a class="text-danger ml-2" href="/lembrete/delete/<%= index %>">Excluir</a>
+                </td>
               </tr>
             </table>
           </div>
