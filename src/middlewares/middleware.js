@@ -2,6 +2,7 @@ exports.middlewareGlobal = (req, res, next) => {
   res.locals.errors = req.flash('errors');
   res.locals.success = req.flash('success');
   res.locals.lembretes = req.flash('lembretes');
+  res.locals.indexLembreteEdited = req.flash('indexLembreteEdited');
   res.locals.user = req.session.user
   next();
 };

@@ -4,6 +4,24 @@ module.exports.index = (req, res) => {
     res.render('lembrete')
 }
 
+module.exports.edit = (req, res) => {
+    
+    //Aqui eu preciso salvar o index do lembrete em uma flash
+    console.log("Index do lembrete a ser editado:",req.params.index) 
+    const lembretes = req.session.user.lembrete
+    const indexLembreteEdited = req.params.index
+    res.render('lembreteEdit', {lembretes, indexLembreteEdited})
+
+}
+
+module.exports.edited = async(req, res) => {
+    
+    //Aqui eu preciso editar o lembrete no index informado no DB
+    console.log("Tentando editar o lembrete no index:",req.params.index)
+
+
+}
+
 //Para acessar os lembretes do usuário: req.session.user.lembrete
 //Então, eu passo essa informação como parâmetro, e aqui posso recuperar
 //com um lembrete.lembretes e aplicar essa informação a um flash da seguinte forma:
@@ -41,6 +59,6 @@ module.exports.delete = async function(req, res) {
     console.log(`index ${req.params.index} do usuário ${res.locals.user.email} após o destroy`)
     console.log("Lembretes na Session:",req.session.user.lembrete)
     //Não preciso acionar o flash aqui... só preciso atualizar a Session e redirecionar para a home
-    await console.log("Lembretes na flag:",dbAtualizadoAposDELETE.lembrete)
+    console.log("Lembretes na flag:",dbAtualizadoAposDELETE.lembrete)
     req.session.save(() => res.redirect('/'))
 }
