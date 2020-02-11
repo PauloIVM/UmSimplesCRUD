@@ -18,7 +18,18 @@ module.exports.edited = async(req, res) => {
     
     //Aqui eu preciso editar o lembrete no index informado no DB
     console.log("Tentando editar o lembrete no index:",req.params.index)
+    console.log("Value do novo lembrete:",req.body.lembrete)
+    if(!req.params.index) return res.render('404') 
 
+    const lembrete = new Lembrete(req.body, res.locals.user.email, req.session.user.lembrete)
+    const dbAtualizadoAposEDIT = await lembrete.edit(req.params, res.locals.user, req.body.lembrete) 
+    
+    req.session.user.lembrete = []
+    dbAtualizadoAposEDIT.lembrete.forEach((element, index) => {
+        req.session.user.lembrete[index] = element        
+    });
+
+    req.session.save(() => res.redirect('/'))
 
 }
 

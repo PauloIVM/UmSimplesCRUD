@@ -18,13 +18,24 @@ class Lembrete {
     }catch(e){console.log("Erro no registro de lembrete ")}
   }
 
-  async edit(index, user){
+  async edit(params, user, novoLembrete){
     try {
+      const index = params.index
+      const antigoLembrete = user.lembrete[index]
       const email = user.email
-      const novoLembrete = user.lembrete[index] 
 
       //Aqui eu vou precisar acessar o array pelo index e alterá-lo para o novoLembrete
-      await LoginModel.loginModel.updateOne({email: email},{$pull: {lembrete: novoLembrete}})
+      //await LoginModel.loginModel.updateOne({email: email},{$inc: {"lembrete[0]": novoLembrete}})
+      //Deletando o antigo lembrete
+      await LoginModel.loginModel.updateOne({email: email},{$pull: {lembrete: antigoLembrete}})
+      //Adicionando o lembrete editado
+      await LoginModel.loginModel.updateOne({email: email},{$push: {lembrete: novoLembrete}})
+      
+      // await LoginModel.loginModel.aggregate([
+      //   { $match: {email: email} },
+      // ])
+      // await LoginModel.loginModel.findOne({email: email}).findOne()
+
       return await LoginModel.loginModel.findOne({email: email})
 
     } catch (error) {
