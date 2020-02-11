@@ -24,18 +24,16 @@ class Lembrete {
       const antigoLembrete = user.lembrete[index]
       const email = user.email
 
-      //Aqui eu vou precisar acessar o array pelo index e alterá-lo para o novoLembrete
-      //await LoginModel.loginModel.updateOne({email: email},{$inc: {"lembrete[0]": novoLembrete}})
+
       //Deletando o antigo lembrete
+
       await LoginModel.loginModel.updateOne({email: email},{$pull: {lembrete: antigoLembrete}})
       //Adicionando o lembrete editado
-      await LoginModel.loginModel.updateOne({email: email},{$push: {lembrete: novoLembrete}})
-      
-      // await LoginModel.loginModel.aggregate([
-      //   { $match: {email: email} },
-      // ])
-      // await LoginModel.loginModel.findOne({email: email}).findOne()
 
+      await LoginModel.loginModel.updateOne({email: email},{$push: {lembrete: novoLembrete}})
+
+      //await LoginModel.loginModel.replaceOne({email: email},{lembrete: antigoLembrete, lembrete: novoLembrete})
+ 
       return await LoginModel.loginModel.findOne({email: email})
 
     } catch (error) {
